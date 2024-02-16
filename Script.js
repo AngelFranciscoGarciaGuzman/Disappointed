@@ -1,5 +1,3 @@
-console.log ("hola");
-
 console.info ("Mensaje de informacion");
 
 console.warn ("Mensaje de advertencia");
@@ -10,12 +8,6 @@ console.error ("Mensaje de error");
 
 var juego = "minecraft";
 
-
-
-
-//Forma moderna de variable
-
-let cant = 1
 
 alert('Proyecto en proceso');
 
@@ -179,21 +171,28 @@ console.log("Número con dígitos en orden inverso:", numInverso);
 function Rectangulo(ancho, altura) {
   this.ancho = ancho;
   this.altura = altura;
+  
+  // Método para calcular el área del rectángulo
+  this.calcularArea = function() {
+    return this.ancho * this.altura;
+  };
+  
+  // Método para calcular el perímetro del rectángulo
+  this.calcularPerimetro = function() {
+    return 2 * (this.ancho + this.altura);
+  };
 }
 
-// Agrega el método calcularArea al prototipo del objeto Rectangulo
-Rectangulo.prototype.calcularArea = function() {
-  return this.ancho * this.altura;
-};
+// Crear un nuevo objeto Rectangulo con valores iniciales de ancho y altura
+const rectangulo = new Rectangulo(10, 50);
 
-// Crea un nuevo objeto Rectangulo con valores iniciales de ancho y altura
-const rectangulo = new Rectangulo(5, 10);
-
-// Calcula el área del rectángulo utilizando el método calcularArea
+// Calcular y mostrar el área del rectángulo
 const area = rectangulo.calcularArea();
-
-// Muestra el área del rectángulo en la consola
 console.log("Área del rectángulo:", area);
+
+// Calcular y mostrar el perímetro del rectángulo
+const perimetro = rectangulo.calcularPerimetro();
+console.log("Perímetro del rectángulo:", perimetro);
 
 // Define la función mostrarAreaRectangulo
 function mostrarAreaRectangulo() {
