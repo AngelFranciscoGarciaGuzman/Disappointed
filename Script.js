@@ -10,7 +10,7 @@ console.error ("Mensaje de error");
 
 var juego = "minecraft";
 
-const precio = 50;
+
 
 
 //Forma moderna de variable
@@ -110,23 +110,96 @@ document.write("Tiempo de respuesta: " + tiempo + " milisegundos.");
 
 //3
 function contador(arr) {
-    var negativos = 0;
-    var ceros = 0;
-    var positivos = 0;
-    
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] < 0) {
-        negativos++;
-      } else if (arr[i] === 0) {
-        ceros++;
-      } else {
-        positivos++;
-      }
-    }
-    
-    return [negativos, ceros, positivos];
-  }
+  let negativos = 0;
+  let ceros = 0;
+  let mayoresACero = 0;
   
-  // Prueba de la función
-  console.assert(JSON.stringify(contador([-1, 0, 1, 2, -3, 0])) === JSON.stringify([2, 2, 2]), "Test 1 falló");
-  console.assert(JSON.stringify(contador([0, 0, 0, 0])) === JSON.stringify([0, 4, 0]), "Test 2 falló");
+  arr.forEach(numero => {
+      if (numero < 0) {
+          negativos++;
+      } else if (numero === 0) {
+          ceros++;
+      } else {
+          mayoresACero++;
+      }
+  });
+
+  console.log("Cantidad de números negativos:", negativos);
+  console.log("Cantidad de ceros:", ceros);
+  console.log("Cantidad de valores mayores a 0:", mayoresACero);
+}
+
+// Ejemplo de uso:
+const array = [1, -2, 0, 5, -3, 0, 8];
+contador(array);
+
+//4
+
+function promedios(matriz) {
+  let promediosArr = [];
+  
+  matriz.forEach(arreglo => {
+      let suma = arreglo.reduce((acumulador, numero) => acumulador + numero, 0);
+      let promedio = suma / arreglo.length;
+      promediosArr.push(promedio);
+  });
+
+  return promediosArr;
+}
+
+// Ejemplo de uso:
+const matriz = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+const resultados = promedios(matriz);
+console.log("Promedios de cada renglón:", resultados);
+
+//5
+
+function inverso(numero) {
+  // Convertir el número a cadena y luego a arreglo para manipular sus dígitos
+  const digitos = Array.from(numero.toString());
+
+  // Invertir el arreglo de dígitos y unirlos nuevamente en una cadena
+  const numeroInverso = parseInt(digitos.reverse().join(''));
+
+  return numeroInverso;
+}
+
+// Ejemplo de uso:
+const num = 12345;
+const numInverso = inverso(num);
+console.log("Número original:", num);
+console.log("Número con dígitos en orden inverso:", numInverso);
+
+//6
+// Definición del objeto Rectangulo
+function Rectangulo(ancho, altura) {
+  this.ancho = ancho;
+  this.altura = altura;
+}
+
+// Agrega el método calcularArea al prototipo del objeto Rectangulo
+Rectangulo.prototype.calcularArea = function() {
+  return this.ancho * this.altura;
+};
+
+// Crea un nuevo objeto Rectangulo con valores iniciales de ancho y altura
+const rectangulo = new Rectangulo(5, 10);
+
+// Calcula el área del rectángulo utilizando el método calcularArea
+const area = rectangulo.calcularArea();
+
+// Muestra el área del rectángulo en la consola
+console.log("Área del rectángulo:", area);
+
+// Define la función mostrarAreaRectangulo
+function mostrarAreaRectangulo() {
+  // Calcula el área del rectángulo utilizando el método calcularArea
+  const area = rectangulo.calcularArea();
+
+  // Muestra el área del rectángulo en la consola
+  console.log("Área del rectángulo:", area);
+}
