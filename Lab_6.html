@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minecraft</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="https://bulma.io">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT27Ahugh_giimXgC5jzZNAIdsZGxqjA-bvxw-4gRbBfF8evxX2rYwG4eI_fRiurOTiZ_c&usqp=CAU" width="112" height="28">
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                  Documentation
+                </a>
+          
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                    More
+                  </a>
+          
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                      About
+                    </a>
+                    <a class="navbar-item">
+                      Jobs
+                    </a>
+                    <a class="navbar-item">
+                      Contact
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                      Report an issue
+                    </a>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary">
+                      <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                      Log in
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        <section class="section">
+            <div class="container">
+                <h1 class="title">Lab 6!!1!11!</h1>
+
+                <div class="block">
+                    <figure class="title">
+                        <img id="imagen_construir" src="https://pbs.twimg.com/media/FDfDlc5VIAU4qq_?format=jpg&name=large">
+                    </figure>
+
+                </div>
+
+                
+                <div>
+                    <button id="boton_construir" class="button is-primary" onCick="">Construir casa</button>
+                </div>
+
+                <!-- Verificar contraseña -->
+
+                <head>
+
+
+                    <title>Validador de Contraseñas</title>
+
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f9f9f9;
+                            text-align: center;
+                        }
+                        .container {
+                            max-width: 400px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            background-color: #ffffff;
+                            border-radius: 8px;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        }
+                        input[type="password"] {
+                            width: 100%;
+                            padding: 10px;
+                            margin-bottom: 10px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                        }
+                        #message {
+                            color: #888;
+                        }
+                        .valid {
+                            color: green;
+                        }
+                        .invalid {
+                            color: red;
+                        }
+                    </style>
+
+                    <head>
+                        <title>Preguntas sobre la validación de formularios con JavaScript</title>
+                    </head>
+                    
+                    <body>
+
+                        <div class="content is-large">
+                        <h1>Preguntas sobre la validación de formularios con JavaScript</h1>
+                        </div>
+                        
+                        <div class="content is-medium">
+                        <h2>1. ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?</h2>
+                        </div>
+                        
+                        <p>Es una buena práctica utilizar JavaScript para validar los inputs de los formularios antes de enviar los datos al servidor porque proporciona una experiencia de usuario más fluida y receptiva al detectar errores en tiempo real sin necesidad de recargar la página. Esto permite corregir los errores de entrada de manera inmediata, mejorando la usabilidad del formulario y reduciendo la carga en el servidor al prevenir el envío de datos incorrectos o incompletos.</p>
+                        <div class="content is-medium">
+                        <h2>2. ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?</h2>
+                        </div>
+                        <p>Es importante tener en cuenta que la validación del lado del cliente con JavaScript es susceptible a manipulación por parte del usuario, ya que el código JavaScript se ejecuta en el navegador del cliente y, por lo tanto, puede ser modificado o desactivado. Un usuario malintencionado puede evitar la validación de JavaScript mediante herramientas de desarrollador del navegador, desactivando scripts o manipulando directamente los valores de los campos de entrada antes de enviar el formulario.</p>
+
+                        <div class="content is-medium">
+                        <h2>3. Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces ¿por qué la primera pregunta dice que es una buena práctica?</h2>
+                        </div>
+                        
+                        <p>Aunque la validación del lado del cliente con JavaScript puede ser eludida, sigue siendo una buena práctica utilizarla como una capa adicional de validación para mejorar la experiencia del usuario y reducir la carga en el servidor. Aunque no proporciona una seguridad absoluta, ayuda a prevenir errores comunes y mejora la usabilidad del formulario. Sin embargo, es fundamental complementarla con una validación robusta del lado del servidor para garantizar la integridad y seguridad de los datos enviados al servidor.</p>
+                    </body>
+
+                </head>
+
+                <body>
+                    <div class="container">
+
+                        <h1>Validador de Contraseñas</h1>
+
+                        <input type="password" id="password" placeholder="Ingresa tu contraseña">
+                        <input type="password" id="confirmPassword" placeholder="Verifica tu contraseña">
+                        <p id="message"></p>
+
+                    </div>
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                              <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                              </figure>
+                            </div>
+                            <div class="card-content">
+                              <div class="media">
+                                <div class="media-left">
+                                  <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <p class="title is-4">John Smith</p>
+                                  <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                              </div>
+                          
+                              <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                              <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                              </figure>
+                            </div>
+                            <div class="card-content">
+                              <div class="media">
+                                <div class="media-left">
+                                  <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <p class="title is-4">John Smith</p>
+                                  <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                              </div>
+                          
+                              <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                              <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                              </figure>
+                            </div>
+                            <div class="card-content">
+                              <div class="media">
+                                <div class="media-left">
+                                  <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <p class="title is-4">John Smith</p>
+                                  <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                              </div>
+                          
+                              <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                              <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                              </figure>
+                            </div>
+                            <div class="card-content">
+                              <div class="media">
+                                <div class="media-left">
+                                  <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <p class="title is-4">John Smith</p>
+                                  <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                              </div>
+                          
+                              <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+
+                  </div>
+
+                <table>
+                    <tbody>
+                        <tr><td>Manzanas</td><td id="diamantes">Diamantes</td></tr>
+                    </tbody>
+                    <thead>
+                        <tr><th>Comida</th><th>Minerales</th></tr>
+                    </thead>
+                    <tfoot class="red">
+                        <tr><td colspan="2">Tabla de objetos de Minecraft</td></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="content has-text-centered">
+              <p>
+                <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+              </p>
+            </div>
+          </footer>
+        <script src="Script_Lab6.js" ></script>
+    </body>
+</html>
