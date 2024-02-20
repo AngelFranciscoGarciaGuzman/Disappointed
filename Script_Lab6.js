@@ -93,3 +93,13 @@ function checkStrength(password) {
 
     return true;
 }
+
+function mostrarImagen() {
+    document.querySelector('.texto-dinamico').style.display = 'none';
+    document.querySelector('.imagen-dinamica').style.display = 'inline-block';
+  }
+  
+  function mostrarTexto() {
+    document.querySelector('.texto-dinamico').style.display = 'inline-block';
+    document.querySelector('.imagen-dinamica').style.display = 'none';
+  }
