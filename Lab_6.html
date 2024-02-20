@@ -149,18 +149,24 @@
                         <p>Aunque la validación del lado del cliente con JavaScript puede ser eludida, sigue siendo una buena práctica utilizarla como una capa adicional de validación para mejorar la experiencia del usuario y reducir la carga en el servidor. Aunque no proporciona una seguridad absoluta, ayuda a prevenir errores comunes y mejora la usabilidad del formulario. Sin embargo, es fundamental complementarla con una validación robusta del lado del servidor para garantizar la integridad y seguridad de los datos enviados al servidor.</p>
                     </body>
 
-                </head>
-
-                <body>
-                    <div class="container">
-
-                        <h1>Validador de Contraseñas</h1>
-
-                        <input type="password" id="password" placeholder="Ingresa tu contraseña">
-                        <input type="password" id="confirmPassword" placeholder="Verifica tu contraseña">
-                        <p id="message"></p>
-
-                    </div>
+ 
+                      <meta charset="UTF-8">
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                      <title>Verificador de Contraseñas Fuertes</title>
+                      <link rel="stylesheet" href="main.css">
+                  </head>
+                  <body>
+                      <div class="checkerContainer">
+                          <h1 class="title">Verificador de Contraseñas Fuertes</h1>
+                          <div class="form-group" data-placeholder="Contraseña">
+                              <input type="password" id="passwordChecker">
+                              <span class='passTypeToggle' title="Mostrar"><i class="fa-solid fa-eye"></i></span>
+                          </div>
+                          <div class="message"></div>
+                      </div>
+                  
+                      <script src="script.js"></script>
+                  </body>
 
                 <div class="columns">
                     <div class="column">

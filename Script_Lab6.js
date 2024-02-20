@@ -44,25 +44,53 @@ const destruir_casa = () => {
 destruir_casa();
 boton.onclick = construir_casa;
 
-//Verificar contraseñas
 
-const passwordInput = document.getElementById('password');
-const confirmPasswordInput = document.getElementById('confirmPassword');
-const message = document.getElementById('message');
+// script.js
+
+const passwordInput = document.getElementById('passwordChecker');
+const message = document.querySelector('.message');
+
+passwordInput.addEventListener('input', validatePassword);
 
 function validatePassword() {
     const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
 
-    if (password === confirmPassword) {
-        message.textContent = 'Las contraseñas coinciden';
-        message.className = 'valid';
+    // Verificar si la contraseña cumple con los criterios
+    const isStrong = checkStrength(password);
 
+    if (isStrong) {
+        message.textContent = 'Contraseña fuerte';
+        message.style.color = 'green';
     } else {
-        message.textContent = 'Las contraseñas no coinciden';
-        message.className = 'invalid';
+        message.textContent = 'La contraseña debe contener al menos 8 caracteres, incluyendo letras mayúsculas, minúsculas, números y caracteres especiales.';
+        message.style.color = 'red';
     }
 }
 
-passwordInput.addEventListener('input', validatePassword);
-confirmPasswordInput.addEventListener('input', validatePassword);
+function checkStrength(password) {
+    // Verificar longitud mínima
+    if (password.length < 8) {
+        return false;
+    }
+
+    // Verificar caracteres especiales
+    const specialChars = /[!@#$%^&*()_+{}\[\]:;<>,.?~]/;
+    if (!specialChars.test(password)) {
+        return false;
+    }
+
+    // Verificar letras mayúsculas y minúsculas
+    const uppercaseChars = /[A-Z]/;
+    const lowercaseChars = /[a-z]/;
+    if (!uppercaseChars.test(password) || !lowercaseChars.test(password)) {
+        return false;
+    }
+
+    // Verificar números
+    const numberChars = /[0-9]/;
+    if (!numberChars.test(password)) {
+        return false;
+    }
+
+    return true;
+}
