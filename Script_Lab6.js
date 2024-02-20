@@ -45,7 +45,6 @@ destruir_casa();
 boton.onclick = construir_casa;
 
 
-// script.js
 
 const passwordInput = document.getElementById('passwordChecker');
 const message = document.querySelector('.message');
