@@ -12,6 +12,12 @@ for (let item of arreglo){
     }, item);
 }
 
+const header = 
+`<header>
+<h4>Bienvenido a la Página Personal de Angel Francisco Garcia Guzman: error 404</h4>
+</header>`
+
+
 
 const http = require('http');
 
@@ -19,7 +25,7 @@ const server = http.createServer( (request, response) => {
 
     console.log(request.url);
 
-    if(request.url == '/construir'){
+    if(request.url == '/raizr'){
 
         response.setHeader('Content-Type', 'text/html');
         response.write(`
@@ -41,7 +47,7 @@ const server = http.createServer( (request, response) => {
     <body>
     
     <div class="blue-grey-text text-lighten-3 container">
-    
+
         <header>
             <h4>Bienvenido a la Página Personal de Angel Francisco Garcia Guzman</h4>
         </header>
@@ -249,46 +255,38 @@ const server = http.createServer( (request, response) => {
 
     }
 
-    else if(request.url == '/construir'){
+    else if(request.url == '/construir' && request.method=="GET"){
+        response.write(header);
+        response.write(`
+            <h1 class="title">CONSTRUYE CONSTRUYE MAMAHUEVO</h1>
+            <form action="construir" method="POST">
+                <label class="label" for="nombre">Nombre</label>
+                <input id="nombre" type="text" class="input"><br>
+                <label class="label" for="imagen">Imagen</label>
+                <input id="imagen" type="text" class="input"><br>
+                <input class="button-is-danger" type="submit" value="Construir">
+            </form>
+        `)
 
-
-        
+        return request.on('end',() =>{
+            const datos_completos = Buffer.contact(datos).toString();
+            console.log(datos_completos);
+            const nuevo_nombre = datos_completos.split('&')[1];
+            return response.end();
+        }
+        )
     }
-
+        
     else{
 
         response.statusCode = 404;
         response.setHeader('Content-Type', 'text/html');
+
+        response.write(header);
         response.write(`
-        <!DOCTYPE html>
-    <html lang="es">
-    
-    <head>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="materialize.css"  media="screen,projection"/>
-    
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      </head>
-    
-      
-    
-    <body>
-    
-    <div class="blue-grey-text text-lighten-3 container">
-    
-        <header>
-            <h1>Error papu 404</h1>
-        </header>
-    
-        <main>
-    
-            <section>
-            
-                
-                <img id = "construir-imagen" src="https://preview.redd.it/ki2tlww8buw71.jpg?width=640&crop=smart&auto=webp&s=272422f998facab8af8505fd812eae511fecf2a8">`);
+        <section class="section">
+            <div class="constainer">
+                <h1 class="title"> ups, error papu!!1!!</h1>`);
 
                 
         response.end();
