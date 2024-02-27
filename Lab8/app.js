@@ -1,42 +1,38 @@
-console.log("Hello World");
+const express = require('express');
+const app = express();
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+//Middleware
+app.use((request, response, next) => {
+    console.log('Middleware!');
+    next(); //Le permite a la petición avanzar hacia el siguiente middleware
+});
+
+app.get('/construir', (request, response, next) =>{
+    console.log(request.body);
+    response.send(`<h1 class="title">CONSTRUYE CONSTRUYE MAMAHUEVO</h1>
+    <form action="construir" method="POST">
+        <label class="label" for="nombre">Nombre</label>
+        <input name="nombre" id="nombre" type="text" class="input"><br>
+        <label class="label" for="imagen">Imagen</label>
+        <input name="imagen" id="imagen" type="text" class="input"><br><br>
+        <input class="button-is-danger" type="submit" value="Construir">
+    </form>
+`)})
+
+app.post("/construir", (request, response, next) => {
+    console.log(request.body);
+    construcciones.push(request.body);
+    response.redirect('/');
+})
 
 
-const filesystem = require('fs');
-filesystem.writeFileSync('hola.txt', 'ooohhh mai gawwd');
-
-const arreglo = [2000, 400, 60, 800, 9, 90, 50];
-
-for (let item of arreglo){
-    setTimeout(() => {
-        console.log("jojo hackiado papu :v xdxdxd");
-    }, item);
-}
-
-const header = 
-`<header>
-<h4>Bienvenido a la Página Personal de Angel Francisco Garcia Guzman: error 404</h4>
-</header>`
-
-const footer = 
-`<footer>
-<p>Creado con HTML5. Editor utilizado: Visual Studio Code, <a href="https://code.visualstudio.com/">sitio del editor</a>.</p>
-</footer>`
-
-const construcciones = [{nombre: "casa", imagen: "https://i.blogs.es/7cfcd0/casas-en-minecraft/1366_2000.jpeg"}];
-
-
-
-const http = require('http');
-
-const server = http.createServer( (request, response) =>{
-
-    console.log(request.url);
-
-    if(request.url == '/raizr'){
-
-        response.setHeader('Content-Type', 'text/html');
-        response.write(`
-        <!DOCTYPE html>
+app.get('/',(request, response, next) => {
+    console.log('Otro middleware!');
+    response.send(`<!DOCTYPE html>
     <html lang="es">
     
     <head>
@@ -249,96 +245,21 @@ const server = http.createServer( (request, response) =>{
             <script src="Script.js"></script>
         </body>
         
+        <footer>
+            <p>Creado con HTML5. Editor utilizado: Visual Studio Code, <a href="https://code.visualstudio.com/">sitio del editor</a>.</p>
+        </footer>
     
         <script type="text/javascript" src="materialize.js"></script> 
     
     </div>
     </body>
-    </html>`);
-        response.end();
-    }
-
-
-    else if(request.url == '/construir' && request.method=="GET"){
-        response.write(header);
-        response.write(`
-            <h1 class="title">CONSTRUYE CONSTRUYE MAMAHUEVO</h1>
-            <form action="construir" method="POST">
-                <label class="label" for="nombre">Nombre</label>
-                <input name="nombre" id="nombre" type="text" class="input"><br>
-                <label class="label" for="imagen">Imagen</label>
-                <input name="imagen" id="imagen" type="text" class="input"><br><br>
-                <input class="button-is-danger" type="submit" value="Construir">
-            </form>
-        `)
-        response.write(footer);
-        response.end();}
-
-        else if (request.url == '/construir' && request.method=="POST"){
-
-            const datos=[];
-    
-            request.on('data', (dato)=>{
-                console.log(dato);
-                datos.push(dato);
-            });
-    
-            const filesystem = require('fs');
-            
-            return request.on('end',() =>{
-                const datos_completos = Buffer.concat(datos).toString();
-                console.log(datos_completos);
-                const nombre = datos_completos.split('&')[0].split('=')[1];
-                console.log(nombre);
-                const imagen = datos_completos.split('&')[1].split('=')[1];
-                console.log(imagen);
-                const decodedimagen = decodeURIComponent(imagen);
-                console.log(decodedimagen);
-                construcciones.push({nombre: nombre, imagen: decodedimagen});
-                const dataToSave = 'Nombre: ${nombre}, Imagen: ${decodedimagen}\n;'
-                filesystem.appendFileSync("datos.txt", dataToSave);
-                return response.end();});}
-
-                else{
-                    response.statusCode = 404;
-                    response.setHeader('Content-Type', 'text/html');
-                    response.write(header);
-                    response.write(`
-                            <section class="section">
-                                <div class="container">
-                                    <h1 class="title">Ups,no existe tu mundo!</h1>
-                                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ae2dd6cb-d761-4361-a4fb-c278ed98e7e0/detqtlt-d5792735-d39e-4081-ba59-90e1021d52b2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FlMmRkNmNiLWQ3NjEtNDM2MS1hNGZiLWMyNzhlZDk4ZTdlMFwvZGV0cXRsdC1kNTc5MjczNS1kMzllLTQwODEtYmE1OS05MGUxMDIxZDUyYjIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.MjhNrGbPzJZzeqgMI4lRdS5E8n2X-Qe_AOWhE09gaec" alt="Placeholder image">
-            
-                                </div>`);
-                    response.write(footer);
-                    response.end();}
-
-function calcularPromedio(arr) {
-    let suma = arr.reduce((a, b) => a + b, 0);
-    return suma / arr.length;
-}
-
-let numeros = [1, 2, 3, 4, 5];
-console.log(calcularPromedio(numeros));
-
-const fs = require('fs');
-
-function escribirEnArchivo(texto) {
-    fs.writeFile('texto.txt', texto, (err) => {
-        if (err) throw err;
-        console.log('El archivo ha sido guardado!');
-    });
-}
-
-escribirEnArchivo('Hola, mundo!');
-
-function invertirCadena(cadena) {
-    return cadena.split('').reverse().join('');
-}
-
-console.log(invertirCadena('Hola, mundo!'));
-
-
+    </html>`); //Manda la respuesta
+    next();
 });
 
-server.listen(3000);
+app.use((request, response, next) => {
+    response.status(404)
+    response.send('no existe papu xd')});
+
+
+app.listen(3000);
