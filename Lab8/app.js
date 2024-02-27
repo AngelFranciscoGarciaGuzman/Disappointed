@@ -17,11 +17,18 @@ const header =
 <h4>Bienvenido a la Página Personal de Angel Francisco Garcia Guzman: error 404</h4>
 </header>`
 
+const footer = 
+`<footer>
+<p>Creado con HTML5. Editor utilizado: Visual Studio Code, <a href="https://code.visualstudio.com/">sitio del editor</a>.</p>
+</footer>`
+
+const construcciones = [{nombre: "casa", imagen: "https://i.blogs.es/7cfcd0/casas-en-minecraft/1366_2000.jpeg"}];
+
 
 
 const http = require('http');
 
-const server = http.createServer( (request, response) => {
+const server = http.createServer( (request, response) =>{
 
     console.log(request.url);
 
@@ -242,9 +249,6 @@ const server = http.createServer( (request, response) => {
             <script src="Script.js"></script>
         </body>
         
-        <footer>
-            <p>Creado con HTML5. Editor utilizado: Visual Studio Code, <a href="https://code.visualstudio.com/">sitio del editor</a>.</p>
-        </footer>
     
         <script type="text/javascript" src="materialize.js"></script> 
     
@@ -252,8 +256,8 @@ const server = http.createServer( (request, response) => {
     </body>
     </html>`);
         response.end();
-
     }
+
 
     else if(request.url == '/construir' && request.method=="GET"){
         response.write(header);
@@ -261,42 +265,53 @@ const server = http.createServer( (request, response) => {
             <h1 class="title">CONSTRUYE CONSTRUYE MAMAHUEVO</h1>
             <form action="construir" method="POST">
                 <label class="label" for="nombre">Nombre</label>
-                <input id="nombre" type="text" class="input"><br>
+                <input name="nombre" id="nombre" type="text" class="input"><br>
                 <label class="label" for="imagen">Imagen</label>
-                <input id="imagen" type="text" class="input"><br>
+                <input name="imagen" id="imagen" type="text" class="input"><br><br>
                 <input class="button-is-danger" type="submit" value="Construir">
             </form>
         `)
+        response.write(footer);
+        response.end();}
 
-        return request.on('end',() =>{
-            const datos_completos = Buffer.contact(datos).toString();
-            console.log(datos_completos);
-            const nuevo_nombre = datos_completos.split('&')[1];
-            return response.end();
-        }
-        )
-    }
-        
-    else{
+        else if (request.url == '/construir' && request.method=="POST"){
 
-        response.statusCode = 404;
-        response.setHeader('Content-Type', 'text/html');
+            const datos=[];
+    
+            request.on('data', (dato)=>{
+                console.log(dato);
+                datos.push(dato);
+            });
+    
+            const filesystem = require('fs');
+            
+            return request.on('end',() =>{
+                const datos_completos = Buffer.concat(datos).toString();
+                console.log(datos_completos);
+                const nombre = datos_completos.split('&')[0].split('=')[1];
+                console.log(nombre);
+                const imagen = datos_completos.split('&')[1].split('=')[1];
+                console.log(imagen);
+                const decodedimagen = decodeURIComponent(imagen);
+                console.log(decodedimagen);
+                construcciones.push({nombre: nombre, imagen: decodedimagen});
+                const dataToSave = 'Nombre: ${nombre}, Imagen: ${decodedimagen}\n;'
+                filesystem.appendFileSync("datos.txt", dataToSave);
+                return response.end();});}
 
-        response.write(header);
-        response.write(`
-        <section class="section">
-            <div class="constainer">
-                <h1 class="title"> ups, error papu!!1!!</h1>`);
-
-                
-        response.end();
-    }
-
-
-    console.log(request);
-
-
-});
+                else{
+                    response.statusCode = 404;
+                    response.setHeader('Content-Type', 'text/html');
+                    response.write(header);
+                    response.write(`
+                            <section class="section">
+                                <div class="container">
+                                    <h1 class="title">Ups,no existe tu mundo!</h1>
+                                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ae2dd6cb-d761-4361-a4fb-c278ed98e7e0/detqtlt-d5792735-d39e-4081-ba59-90e1021d52b2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FlMmRkNmNiLWQ3NjEtNDM2MS1hNGZiLWMyNzhlZDk4ZTdlMFwvZGV0cXRsdC1kNTc5MjczNS1kMzllLTQwODEtYmE1OS05MGUxMDIxZDUyYjIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.MjhNrGbPzJZzeqgMI4lRdS5E8n2X-Qe_AOWhE09gaec" alt="Placeholder image">
+            
+                                </div>`);
+                    response.write(footer);
+                    response.end();}
 
 function calcularPromedio(arr) {
     let suma = arr.reduce((a, b) => a + b, 0);
@@ -323,5 +338,7 @@ function invertirCadena(cadena) {
 
 console.log(invertirCadena('Hola, mundo!'));
 
+
+});
 
 server.listen(3000);

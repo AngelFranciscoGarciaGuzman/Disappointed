@@ -1,0 +1,3 @@
+Nombre: ${nombre}, Imagen: ${decodedimagen}
+;Nombre: ${nombre}, Imagen: ${decodedimagen}
+;
