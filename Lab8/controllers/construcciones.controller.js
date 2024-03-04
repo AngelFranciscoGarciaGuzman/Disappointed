@@ -1,5 +1,7 @@
 const Construccion = require('../models/construccion.model');
 
+const Emulador = require('../models/emulador.model');
+
 exports.get_construir = (request, response, next) => {
     response.render('construir'); 
 };
@@ -18,3 +20,9 @@ exports.get_root = (request, response, next) => {
         construcciones: Construccion.fetchAll(),
     });
 }
+
+exports.get_emuladores = (request, response, next) => {
+    response.render('emuladores', {
+        emuladores: Emulador.fetchAll(),
+    }); 
+};

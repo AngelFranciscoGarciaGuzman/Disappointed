@@ -8,7 +8,7 @@ const emuladores = [
     },
     {
         nombre: "SNES",
-        imagen: "URL_dhttps://upload.wikimedia.org/wikipedia/commons/thumb/3/36/SNES-Mod1-Console-Set.png/250px-SNES-Mod1-Console-Set.png",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/SNES-Mod1-Console-Set.png/250px-SNES-Mod1-Console-Set.png",
     },
     // ...otros emuladores de Nintendo
 ];
