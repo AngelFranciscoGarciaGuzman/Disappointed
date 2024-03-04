@@ -1,9 +1,4 @@
-const construcciones = [
-    {
-        nombre: "casa", 
-        imagen: "https://i.blogs.es/7cfcd0/casas-en-minecraft/1366_2000.jpeg",
-    }
-];
+const Construccion = require('../models/construccion.model');
 
 exports.get_construir = (request, response, next) => {
     response.render('construir'); 
@@ -11,13 +6,15 @@ exports.get_construir = (request, response, next) => {
 
 exports.post_construir = (request, response, next) => {
     console.log(request.body);
-    construcciones.push(request.body);
+    const construccion = 
+        new Construccion(request.body.nombre, request.body.imagen);
+    construccion.save();
     response.redirect('/');
 };
 
 exports.get_root = (request, response, next) => {
     console.log('Ruta /');
     response.render('construcciones', {
-        construcciones: construcciones,
+        construcciones: Construccion.fetchAll(),
     });
 }

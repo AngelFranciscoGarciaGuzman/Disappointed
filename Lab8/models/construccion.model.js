@@ -18,12 +18,12 @@ module.exports = class Construccion {
         construcciones.push({
             nombre: this.nombre,
             imagen: this.imagen,
-        });
+        }); //es lo mismo que construcciones.push(this);
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        
+        return construcciones;
     }
 
 }
