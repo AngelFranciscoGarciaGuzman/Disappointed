@@ -1,0 +1,37 @@
+<%- include('includes/head.ejs') %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emuladores de Nintendo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Emuladores de Nintendo</h1>
+            <ul class="columns is-multiline">
+                <% emuladores.forEach(emulador => { %>
+                    <li class="column is-one-third">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="<%= emulador.imagen %>" alt="<%= emulador.nombre %>">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <h2 class="subtitle"><%= emulador.nombre %></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
+
+
+<%- include('includes/foot.ejs') %>
