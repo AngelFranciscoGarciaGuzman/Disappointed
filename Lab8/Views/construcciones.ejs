@@ -39,7 +39,11 @@
                 <% } %>
                 
             </div>
+            <% if(ultima_construccion != "") { %>
+                <div> La ultima fue <%=ultima_construccion%>. </div>
+            <% } %>
         </section>
+
     </body>
 
     <%- include('includes/foot.ejs') %>
