@@ -1,9 +1,4 @@
-const construcciones = [
-    {
-        nombre: "casa", 
-        imagen: "https://media1.tenor.com/m/Yn8OFus9tikAAAAd/boomshakalaka.gif",
-    }
-];
+const db = require('../util/database');
 
 module.exports = class Construccion {
 
@@ -15,15 +10,15 @@ module.exports = class Construccion {
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        construcciones.push({
-            nombre: this.nombre,
-            imagen: this.imagen,
-        }); //es lo mismo que construcciones.push(this);
+        return db.execute(
+            'INSERT INTO construccion (nombre, imagen, username) VALUES (?, ?, "angel")',
+            [this.nombre, this.imagen]
+        );
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return construcciones;
+        return db.execute('SELECT * FROM construccion');
     }
 
 }
