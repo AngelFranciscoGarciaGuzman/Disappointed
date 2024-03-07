@@ -1,7 +1,7 @@
 const construcciones = [
     {
         nombre: "casa", 
-        imagen: "https://i.blogs.es/7cfcd0/casas-en-minecraft/1366_2000.jpeg",
+        imagen: "https://media1.tenor.com/m/Yn8OFus9tikAAAAd/boomshakalaka.gif",
     }
 ];
 
