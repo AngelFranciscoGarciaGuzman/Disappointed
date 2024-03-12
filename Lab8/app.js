@@ -19,16 +19,21 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: false}));
 
+//Agregar protección contra ataques de CSRF
+const csrf = require('csurf');
+const csrfProtection = csrf();
+app.use(csrfProtection); 
+
 //Middleware
 app.use((request, response, next) => {
   console.log('Middleware!');
   next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-const rutasUsuarios = require('./routes/usuarios.routes');
+const rutasUsuarios = require('./Routes/usuarios.routes');
 app.use('/users', rutasUsuarios);
 
-const rutasConstrucciones = require('./routes/construcciones.routes');
+const rutasConstrucciones = require('./Routes/construcciones.routes');
 app.use('/construcciones', rutasConstrucciones);
 
 app.use((request, response, next) => {

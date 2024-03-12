@@ -3,6 +3,7 @@ const Construccion = require('../models/construccion.model');
 exports.get_construir = (request, response, next) => {
     response.render('construir', {
         username: request.session.username || '',
+        csrfToken: request.csrfToken(),
     }); 
 };
 
@@ -36,6 +37,7 @@ exports.get_root = (request, response, next) => {
             construcciones: rows,
             ultima_construccion: ultima_construccion,
             username: request.session.username || '',
+            csrfToken: request.csrfToken(),
         });
     })
     .catch((error) => {
