@@ -1,4 +1,7 @@
-<%- include('includes/head.ejs', {username: username}) %>
+<%- include('includes/head.ejs', {
+    username: username, 
+    permisos: permisos
+}) %>
 
 <h1 class="title"><% if(registrar) { %>Bienvenido<% } else { %>Hola de nuevo<% } %></h1>
 
@@ -9,7 +12,7 @@
 <% } %>
 
 <form action="/users/<% if(registrar) { %>signup<% } else { %>login<% } %>" method="POST">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
     <label class="label" for="username">Nombre de usuario</label>
     <input name="username" id="username" type="text" class="input"><br>
     <label class="label" for="password">Contraseña</label>
