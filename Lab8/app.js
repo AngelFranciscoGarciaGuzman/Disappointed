@@ -30,10 +30,10 @@ app.use((request, response, next) => {
   next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-const rutasUsuarios = require('./Routes/usuarios.routes');
+const rutasUsuarios = require('./routes/usuarios.routes');
 app.use('/users', rutasUsuarios);
 
-const rutasConstrucciones = require('./Routes/construcciones.routes');
+const rutasConstrucciones = require('./routes/construcciones.routes');
 app.use('/construcciones', rutasConstrucciones);
 
 app.use((request, response, next) => {
