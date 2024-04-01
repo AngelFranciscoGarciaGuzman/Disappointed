@@ -35,7 +35,7 @@ const fileStorage = multer.diskStorage({
         //aquí configuramos el nombre que queremos que tenga el archivo en el servidor, 
         //para que no haya problema si se suben 2 archivos con el mismo nombre concatenamos el timestamp
 
-        callback(null, file.originalname);
+        callback(null, Number(new Date()).toString() + '-' + file.originalname);
     },
 });
 
