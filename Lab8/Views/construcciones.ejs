@@ -153,4 +153,32 @@ document.getElementById('buscar').onkeyup = accion_asincrona;
 
 </script>
 
+<hr class="separator">
+
+<div class="faq-section">
+    <h2>Preguntas frecuentes sobre AJAX</h2>
+    <div class="faq-item">
+        <h3>¿Qué importancia tiene AJAX en el desarrollo de RIA's (Rich Internet Applications)?</h3>
+        <p>AJAX permite cargar y enviar datos de forma asíncrona sin necesidad de recargar toda la página, lo que mejora la experiencia del usuario al proporcionar interacciones más dinámicas y rápidas en las aplicaciones web.</p>
+    </div>
+    <div class="faq-item">
+        <h3>¿Qué implicaciones de seguridad tiene AJAX? ¿Dónde se deben hacer las validaciones de seguridad, del lado del cliente o del lado del servidor?</h3>
+        <p>AJAX puede introducir vulnerabilidades de seguridad como ataques CSRF y XSS si no se implementan correctamente medidas de seguridad. Las validaciones de seguridad más importantes deben hacerse en el lado del servidor, ya que el lado del cliente es potencialmente vulnerable a manipulaciones por parte de usuarios malintencionados.</p>
+    </div>
+    <div class="faq-item">
+        <h3>¿Qué es JSON?</h3>
+        <p>JSON (JavaScript Object Notation) es un formato ligero de intercambio de datos que se utiliza comúnmente para enviar datos entre un servidor y un navegador web. Es legible tanto para humanos como para máquinas, y se basa en una sintaxis de objeto similar a la de JavaScript.</p>
+    </div>
+</div>
+
+<hr class="separator">
+
+<footer>
+    <p>Componentes AJAX utilizados:</p>
+    <ul>
+        <li>Función fetch para la búsqueda asíncrona de construcciones.</li>
+    </ul>
+</footer>
+
+
 <%- include('includes/foot.ejs') %>
