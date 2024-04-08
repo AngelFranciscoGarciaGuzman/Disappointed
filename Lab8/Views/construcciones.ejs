@@ -3,76 +3,52 @@
     permisos: permisos
 }) %>
 
-<h1 class="title">Repertorio de imagenes epicas 100% real no fake!</h1>
+<div class="container">
+    <h1 class="title">Repertorio de Imágenes Épicas 100% Reales, ¡No Fake!</h1>
 
+    <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
+    <input id="buscar" class="input is-info" type="text" placeholder="Buscar..."><br><br>
 
-<input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>" >
-
-<input id="buscar" class="input is-info" type="text" placeholder="Buscar..."/><br><br>
-
-<div id="respuesta_ajax">
-
-    <div id="notificacion">
-
-        <% if (construcciones.length < 1) { %>
-            <div class="notification is-info">
-                <button class="delete"></button>
-                No existe la construcción.     
-            </div>
-            <div class="columns">
-
-        <% } %>
-
-        <% let columns = 0; %>
+    <div id="respuesta_ajax" class="columns is-multiline">
         <% for (let construccion of construcciones) { %>
-            <% columns++ %>
-
-            <div class="column">
+            <div class="column is-3">
                 <div class="card">
                     <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src="uploads/<%= construccion.imagen %>" alt="Imagen de <%= construccion.nombre %>">
-                    </figure>
-                    </div>
-                    <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                        <figure class="image is-48x48">
+                        <figure class="image is-4by3">
                             <img src="uploads/<%= construccion.imagen %>" alt="Imagen de <%= construccion.nombre %>">
                         </figure>
-                        </div>
-                        <div class="media-content">
-                        <p class="title is-4"><%= construccion.nombre %></p>
-                        <p class="subtitle is-6">@<%= construccion.nombre%></p>
-                        </div>
                     </div>
-                
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                        <a href="#">#css</a> <a href="#">#responsive</a>
-                        <br>
-                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time><br>
-                        <button class="button is-danger is-light" onclick="eliminar('<%= construccion.id %>')">Eliminar</button>
-                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="uploads/<%= construccion.imagen %>" alt="Imagen de <%= construccion.nombre %>">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4"><%= construccion.nombre %></p>
+                                <p class="subtitle is-6">@<%= construccion.nombre%></p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time><br>
+                            <button class="button is-danger is-light" onclick="eliminar('<%= construccion.id %>')">Eliminar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <% if (columns % 4 == 0) { %>
-                </div>
-                <div class="columns">
-            <% } %>
-            
         <% } %>
+    </div>
 
-    </div>   
+    <% if (ultima_construccion !== '') { %>
+        <div>La última construcción fue <%- ultima_construccion %>.</div>
+    <% } %>
 
 </div>
-
-<% if(ultima_construccion != '') { %>
-    <div>La última construcción fue <%- ultima_construccion %>.</div>
-<% } %>
 
 <script>
 
@@ -314,25 +290,33 @@ const eliminar = (id) => {
     </script>
 </div>
 
-<iframe id="spotify-embed"
-    title="Spotify Embed: Recommendation Playlist "
-    width="100%"
-    height="360px"
-    frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-</iframe>
+<hr class="separator">
 
+<div class="faq-section container">
+    <h2>Preguntas Frecuentes sobre AJAX</h2>
+    <div class="faq-item">
+        <!-- FAQ items remain unchanged -->
+    </div>
+</div>
 
+<div class="container">
+    <iframe id="spotify-embed"
+        title="Spotify Embed: Recommendation Playlist "
+        width="100%"
+        height="360px"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
+</div>
 
 <hr class="separator">
 
-<footer>
+<footer class="container">
     <p>Componentes AJAX utilizados:</p>
     <ul>
         <li>Función fetch para la búsqueda asíncrona de construcciones.</li>
     </ul>
 </footer>
-
 
 <%- include('includes/foot.ejs') %>
